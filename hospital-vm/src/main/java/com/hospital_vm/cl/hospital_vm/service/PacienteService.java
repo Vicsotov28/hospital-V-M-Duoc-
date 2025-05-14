@@ -15,23 +15,27 @@ public class PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    // Listar todos los pacientes
+
     public List<Paciente> findAll() {
         return pacienteRepository.findAll();
     }
 
-    // Buscar paciente por ID
+
     public Paciente findById(long id) {
-        return pacienteRepository.findById(id).get();
+        return pacienteRepository.findById(id).orElse(null);
     }
 
-    // Guardar o actualizar paciente
+
     public Paciente save(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 
-    // Eliminar paciente por ID
+
     public void delete(long id) {
         pacienteRepository.deleteById(id);
+    }
+
+    public Paciente findByRun(String run) {
+        return pacienteRepository.findByRun(run);
     }
 }
